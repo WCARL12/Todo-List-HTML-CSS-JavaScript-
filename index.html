@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/12a71ec4df.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="todo-all">
+      <header>
+        <h1>My To-do List</h1>
+        <!-- <i class="fa-regular fa-clipboard" style="font-size: 40px"></i> -->
+        <i
+          class="fa-solid fa-calendar-days"
+          style="font-size: 37px; margin-right: 5px"
+        ></i>
+        <i class="fa-solid fa-pencil" style="font-size: 35px"></i>
+      </header>
+      <main>
+        <div class="create-tasks">
+          <input
+            type="text"
+            name=""
+            class="js-Todotask-input user-input"
+            id="add-task-input"
+            placeholder="Add your task"
+          />
+          <div class="date-add">
+            <input
+              type="date"
+              name=""
+              id="add-date-input"
+              class="js-Tododate-input user-input"
+            />
+
+            <button class="js-add-button add-button" onclick="addTodo() ">
+              ADD
+            </button>
+          </div>
+        </div>
+        <ol class="js-todo-list todo-list"></ol>
+      </main>
+    </div>
+
+    <script>
+      let taskInputElement = document.querySelector(".js-Todotask-input");
+      let dateInputElement = document.querySelector(".js-Tododate-input");
+      let addButtonElement = document.querySelector(".js-add-button");
+      let todoListElement = document.querySelector(".js-todo-list");
+      let todoListObject = {};
+
+      function addTodo() {
+        todoListObject[taskInputElement.value] = dateInputElement.value;
+        console.log(todoListObject);
+        loopTodo();
+      }
+
+      function loopTodo() {
+        todoListElement.innerHTML = "";
+
+        for (task in todoListObject) {
+          todoListElement.innerHTML += `<li><p class='todotask'>${task}</p> <p class='todotask'>${todoListObject[task]}</p> <button onclick='deleteTask(task)'>Delete</button></li>`;
+        }
+      }
+
+      function deleteTask(task) {
+        delete todoListObject[task];
+        loopTodo();
+      }
+    </script>
+  </body>
+</html>
