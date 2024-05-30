@@ -13,7 +13,7 @@ body {
   /* max-width: 1200px; */
 }
 .todo-all {
-  max-width: 600px;
+  max-width: 800px;
   max-height: 800px;
   /* margin: 0 auto; */
   margin: 3% auto;
@@ -39,13 +39,20 @@ header h1 {
 
 .todotask {
   display: inline;
-  margin-right: 20px;
+  width: max-content;
+  /* margin-right: 20px; */
+}
+.date-delete {
+  display: inline;
 }
 
 .user-input {
   padding: 20px 10px;
   border-radius: 80px;
   height: max-content;
+}
+.task-added {
+  width: 100%;
 }
 .date-add {
   display: inline;
@@ -72,6 +79,18 @@ header h1 {
   width: fit-content;
 }
 
+ol li {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px 0;
+}
+.date-delete {
+  width: 70%;
+  color: red;
+  display: flex;
+  justify-content: space-evenly;
+}
+
 #add-task-input,
 #add-task-input:focus {
   background-color: rgb(253, 236, 236);
@@ -88,17 +107,72 @@ header h1 {
   background-color: blanchedalmond;
   font-size: 0.9em;
 }
+.delete-button {
+  padding: 15px;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  background-color: rgb(245, 152, 109);
+  color: white;
+  border-radius: 20px;
+}
+.task-overload {
+  font-size: 1.1em;
+  text-align: center;
+  margin-top: 60px;
+}
 
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 700px) {
+  body {
+    font-size: 95%;
+  }
+  .create-tasks {
+    font-size: 95%;
+  }
+  .date-added,
+  .delete-button {
+    font-size: 95%;
+    margin: 0 20px;
+  }
+
   .create-tasks {
     width: 90%;
   }
-  .date-add {
+  #add-task-input {
+    width: 90%;
+  }
+  .task-added {
     display: block;
   }
+  div.date-delete {
+    display: block;
+    width: 100%;
+  }
+  ol li {
+    display: block;
+  }
+  .task-overload {
+    margin-top: 30px;
+  }
 }
+@media only screen and (max-height: 720px) {
+  .todo-all {
+    max-height: max-content;
+    max-width: max-content;
+    width: 90%;
+    height: 90%;
+  }
+}
+
 @media only screen and (max-width: 400px) {
+  body {
+    font-size: 80%;
+  }
   .create-tasks {
     font-size: 80%;
+  }
+  .date-added,
+  .delete-button {
+    font-size: 85%;
   }
 }
